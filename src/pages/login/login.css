@@ -1,0 +1,107 @@
+*{
+    padding: 0%;
+    margin: 0;
+}
+.login-box {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10%;
+   
+}
+.login h3 {
+    color: #03014C;
+    margin-top: -5px;
+}
+.box-one {
+    width: 450px;
+    height: 50%;
+    margin-top: 10%;
+}
+.auth-headin {
+    font-size: 39px;
+    font-weight: 700;
+    width: 370px;
+    color: 03014C;
+    color: #03014C;
+    margin-left: -15px;
+}
+.proverlogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #03014C !important;
+    width: 225px;
+    margin-top: 30px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    column-gap: 10px;
+    font-size: 16px;
+}
+.text{
+    color: black !important;
+}
+.outlined {
+    margin-top: 30px;
+    position: relative;
+    
+}
+.outlined input{
+    width: 300px;
+}
+
+.img-box {
+    width: 100%;
+    height: 100vh;
+}
+.btn {
+    margin-top: 30px;
+}
+.loginbtn {
+    width: 300px;
+    background-color: #5F34F5 !important;
+    padding: 18px 30px !important;
+}
+.auth {
+    font-size: 14px;
+    color: #03014C;
+    margin-top: 15px;
+}
+.auth a{
+    color: #EA6C00;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+.auth-heading{
+    margin-left: -100px !important;
+}
+.outlined svg {
+    font-size: 20px;
+    position: absolute;
+    right: 155px;
+    top: 14px;
+    
+}
+span{
+    color: #EA6C00;
+    margin-left: 3px;
+}
+.forget-box {
+    border: none;
+}
+.forgetbtn {
+    margin-top: 15px;
+}
+.error{
+    background-color: rgba(255, 0, 0, 0.536);
+    color: aliceblue;
+    padding: 8px 10px;
+    width: 270px;
+}
