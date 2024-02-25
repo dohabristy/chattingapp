@@ -37,8 +37,8 @@ const Sidebar = () => {
    const userinfo = auth.currentUser
 //    console.log(userinfo.displayName);
 
-let a = localStorage.getItem("user")
-console.log(a);
+// let a = localStorage.getItem("user")
+// console.log(a);
 
   return (
 <>
