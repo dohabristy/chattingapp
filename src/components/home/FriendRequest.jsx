@@ -27,7 +27,7 @@ const FriendRequest = () => {
         });
       },[])
 
-      console.log(fRequest);
+      // console.log(fRequest);
 
 
     //   let handleCancelFRequest = (cancelinfo) => {

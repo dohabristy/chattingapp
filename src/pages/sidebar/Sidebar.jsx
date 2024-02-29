@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const Sidebar = () => {
     const data = useSelector((state) => state.loginuserdata.value);
-    // console.log(data.email);
+    // console.log(data);
     const auth = getAuth();
     const navigate = useNavigate();
 
@@ -29,8 +29,19 @@ const Sidebar = () => {
 
     let handleLogout = () => {
         signOut(auth).then(()=> {
-            toast("Singout Sucessfully")
+            localStorage.removeItem("user");
+            // dispatch(loginuser(null));
             navigate("/")
+            toast.success("Logout Done", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
         })
     }
 
@@ -60,7 +71,8 @@ const Sidebar = () => {
             <div className='profile'>
                     <img src={profile} alt="" />
             </div>
-            <h3 className='User'>DB</h3>
+            <h3 className='User'>{ data &&data.displayName}</h3>
+            <h4 className='emaildesign'>{data && data.email}</h4>
         </div>
         <div className='navigation'> 
             <ul>

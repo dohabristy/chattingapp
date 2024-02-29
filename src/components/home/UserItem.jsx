@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 const UserItem = () => {
-    const[userlist, setUserlist] = useState()
+    const[userList, setUserList] = useState()
     const db = getDatabase();
     const [fRequest, setfRequest] = useState([])
     const [friendList, setfriendList] = useState([])
@@ -20,7 +20,7 @@ const UserItem = () => {
     
 
     // all users data
-  useEffect(()=>{
+    useEffect(()=>{
     const userRef = ref(db, 'users');
     onValue(userRef, (snapshot) => {
       let arr = []
@@ -29,10 +29,10 @@ const UserItem = () => {
           arr.push({...item.val(),id:item.key})
         }
       })
-      setUserlist(arr)
+      setUserList(arr)
     });
   },[])
-  // console.log(userList);
+  console.log(userList);
    
 
       //add friend request 
@@ -41,7 +41,7 @@ const UserItem = () => {
         console.log(frequestinfo);
         set(ref(db, "friendrequest/" + frequestinfo.id),{
           senderid: data.uid,
-          sendername: data.displayName,
+          // sendername: data.displayName,
           senderimg: data.photoURL,
           senderemail: data.email,
           receiverid: frequestinfo.id,
@@ -96,9 +96,9 @@ const UserItem = () => {
        
         <GroupCard title="USER LIST">
             <div className='mainitem'>
-                {userlist && userlist.length>0 
+                {userList && userList.length>0 
                 ?
-                userlist.map((item,index)=>(
+                userList.map((item,index)=>(
                     <div key={index} className='cardbox'>
                         <div className='useritem'>
                             <div className='Userimg'>

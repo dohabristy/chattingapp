@@ -21,6 +21,7 @@ ul li{
     background-color: brown;
     border-radius: 50%;
     margin-top: 30px;
+    margin-left: 20%;
 }
 .profile img {
     width: 100%;
@@ -96,4 +97,8 @@ button svg {
 }
 button svg {
     width: 20px !important;
+}
+.emaildesign {
+    color: #fff;
+    margin-top: 10px;
 }

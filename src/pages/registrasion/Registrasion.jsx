@@ -27,6 +27,7 @@ const Registrasion = () => {
   const db = getDatabase();
   const navigate = useNavigate();
   const[loader,setLoader] = useState(false)
+
   let [Error,setError] = useState({
     email: "",
     fullname:"",
@@ -68,17 +69,20 @@ const Registrasion = () => {
         fullname:"",
         password:""
       })
+
       createUserWithEmailAndPassword(auth, singupData.email, singupData.password)
       .then((userCredential) => {
         sendEmailVerification (auth.currentUser)
        console.log("sent done");
+       console.log(userCredential);
       
        updateProfile(auth.currentUser,{
         displayName: singupData.fullname,
         photoURL:"https://www.freepik.com/free-photos-vectors/female-avatar"
        }).then(()=>{
         navigate("/")
-        console.log(userCredential);
+        // console.log(userCredential);
+       
         set(ref(db, 'users/' + userCredential.user.uid), {
           username: userCredential.user.displayName,
           email: userCredential.user.email,
