@@ -1,0 +1,66 @@
+.meg-wrap {
+    display: flex;
+    padding: 20px;
+    column-gap: 30px;
+}
+.msg-user {
+    width: 30%;
+    background: rgb(207, 209, 219);
+    height: 680px;
+}
+.msg-user-wrap {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.msg-user .list-head {
+    margin-top: 0px;
+    padding: 15px 20px;
+    color: aliceblue;
+    background-color:#5F35F5;
+    font-size: 25px;
+}
+.msg-user-item {
+    width: 100%;
+    height: 100px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0 20px;
+}
+.msg-user-item:hover{
+background-color: rgba(0, 255, 255, 0.242);
+}
+.msg-box-body {
+    width: 70%;
+    background: transparent;
+    height: 680px;
+    border: 1px solid rgb(78, 76, 76);
+}
+.userinfobox {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.msgimg {
+    margin-top: 25px;
+}
+.msg-box-heading {
+    width: 100%;
+    height: 100px;
+    background-color: #5F35F5;
+    margin-top: 0;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+
+}
+.msg-box-heading .msg-heading{
+    position: absolute;
+    text-align: center;
+}

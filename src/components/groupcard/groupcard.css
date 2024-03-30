@@ -11,21 +11,27 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 10px;
 }
-/* .mainitem{
+.mainitem{
+    height: 400px;
     overflow-y: scroll;
-    height: 300px;
-} */
+    padding: 0 10px;
+   
+}
 .grouphead{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 .cardbox {
+   
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #00000040;
     align-items: center;
+    padding: 15px 20px;
 }
+
 .cardbox:last-child{
     border: none;
 }
@@ -34,10 +40,12 @@
     display: flex;
     column-gap: 14px;
     align-items: center;
+    margin-left: -30px;
 }
+
 .Userimg{
     display: flex;
-    column-gap: 14px;
+    /* column-gap: 14px; */
     flex-direction: row !important;
     padding-bottom: 13px;
     border-width: 100%;
@@ -52,11 +60,14 @@
     border-radius: 50%;
 }
 .userbtn{
+    display: flex;
+    column-gap: 10px;
     width: 30px;
     height: 30px;
     padding: 20px;  
     display: flex;
     align-items: center; 
+    /* margin-right: 10px; */
 }
 button{
     border-radius: 10px;
@@ -69,10 +80,31 @@ button{
     color: black;
 }
 .addbutton{
-    padding: 5px;
+    padding: 15px 20px;
     border: 0;
     background-color: blueviolet;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
+}
+.fuserbtn {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    /* justify-content: end; */
+    margin-right: -40px;
+    cursor: pointer;
+}
+.friendinfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: -30px;
+}
+.info {
+    margin-top: -25px;
+}
+.userinfobox {
+    margin-top: -20px;
 }

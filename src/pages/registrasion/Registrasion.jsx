@@ -13,7 +13,7 @@ import Alert from '@mui/material/Alert';
 import { getAuth, createUserWithEmailAndPassword ,sendEmailVerification, updateProfile } from "firebase/auth";
 import { BallTriangle } from 'react-loader-spinner'
 import { useNavigate } from "react-router-dom";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue,set } from "firebase/database";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -52,6 +52,7 @@ const Registrasion = () => {
   let handleSubmit = () => {
     if(!singupData.email){
       setError({email:"email nai"});
+      console.log("hello");
     } 
     else if (!singupData.email.match(emailregex)){
       setError({email: "formet thik nai"})
@@ -70,31 +71,22 @@ const Registrasion = () => {
         password:""
       })
 
-      createUserWithEmailAndPassword(auth, singupData.email, singupData.password)
-      .then((userCredential) => {
-        sendEmailVerification (auth.currentUser)
-       console.log("sent done");
-       console.log(userCredential);
-      
-       updateProfile(auth.currentUser,{
-        displayName: singupData.fullname,
-        photoURL:"https://www.freepik.com/free-photos-vectors/female-avatar"
-       }).then(()=>{
-        navigate("/")
-        // console.log(userCredential);
-       
-        set(ref(db, 'users/' + userCredential.user.uid), {
-          username: userCredential.user.displayName,
-          email: userCredential.user.email,
-          profile_picture : userCredential.user.photoURL
+      createUserWithEmailAndPassword(auth, singupData.email, singupData.password).then((userCredential)=>{
+        sendEmailVerification(auth.currentUser).then(()=>{
+          updateProfile(auth.currentUser,{
+            displayName: singupData.fullname,
+            photoURL: "https://cdn-icons-png.flaticon.com/512/6596/6596121.png"
+          }).then(()=>{
+            set(ref(db, 'users/' + userCredential.user.uid), {
+              username: userCredential.user.displayName,
+              email: userCredential.user.email,
+              profileimg : userCredential.user.photoURL
+            }).then(()=>{
+              navigate("/")
+              console.log(userCredential);
+            })
+          })
         })
-
-       })
-       setsingupData({
-        email: "",
-        fullname:"",
-        password:""
-       })
       }).catch((error)=>{
         const errorCode = error.code;
         const errorMessage = error.message;

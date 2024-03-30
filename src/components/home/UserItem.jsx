@@ -3,7 +3,7 @@ import GroupCard from '../groupcard/GroupCard'
 import'../groupcard/groupcard.css'
 import one from '../../assets/images/one.jpg'
 import { FaPlusCircle } from "react-icons/fa";
-import { getDatabase, ref, onValue,set ,push} from "firebase/database";
+import { getDatabase, ref, onValue,set ,push,remove} from "firebase/database";
 import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -32,7 +32,7 @@ const UserItem = () => {
       setUserList(arr)
     });
   },[])
-  console.log(userList);
+  // console.log(userList);
    
 
       //add friend request 
@@ -41,53 +41,55 @@ const UserItem = () => {
         console.log(frequestinfo);
         set(ref(db, "friendrequest/" + frequestinfo.id),{
           senderid: data.uid,
-          // sendername: data.displayName,
+          sendername: data.displayName,
           senderimg: data.photoURL,
           senderemail: data.email,
           receiverid: frequestinfo.id,
           receivername: frequestinfo.username,
           receiveremail: frequestinfo.email,
-          receiverimg: frequestinfo.profile_picture
+          receiverimg: frequestinfo.profileimg
 
         }).then(()=>{
-          // toast("Friend Request Send Successfully")
+          remove(ref(db, "users/" + acceptinfo.id))
+          toast("Friend Request Send Successfully")
         })
       }
 
-  //     //friend request data
-  // useEffect(()=>{
-  //   const fRequestRef = ref(db, 'friendrequest');
-  //   onValue(fRequestRef, (snapshot) => {
-  //     let arr = []
-  //     snapshot.forEach((item)=>{
-  //       if(item.val().senderid == data.uid){
-  //         arr.push(item.val().receiverid + item.val().senderid)
-  //       }
-  //     })
-  //     setfRequest(arr)
-  //   });
-  // },[])
+      //friend request data
+  useEffect(()=>{
+    const fRequestRef = ref(db, 'friendrequest');
+    onValue(fRequestRef, (snapshot) => {
+      let arr = []
+      snapshot.forEach((item)=>{
+        if(item.val().senderid == data.uid){
+          arr.push(item.val().receiverid + item.val().senderid)
+        }
+      })
+      setfRequest(arr)
+    });
+  },[])
+  console.log(fRequest);
 
-  // //friend data
-  // useEffect(()=>{
-  //   const friendsRef = ref(db, 'friends');
-  //   onValue(friendsRef, (snapshot) => {
-  //     let arr = []
-  //     snapshot.forEach((item)=>{
-  //       if(item.val().whoreceiveid == data.uid || item.val().whosendid == data.uid){
-  //         arr.push(item.val().whoreceiveid + item.val().whosendid)
-  //       }
-  //     })
-  //     setfriendList(arr)
-  //   });
-  // },[])
+  //friend data
+  useEffect(()=>{
+    const friendsRef = ref(db, 'friends');
+    onValue(friendsRef, (snapshot) => {
+      let arr = []
+      snapshot.forEach((item)=>{
+        if(item.val().whoreceiveid == data.uid || item.val().whosendid == data.uid){
+          arr.push(item.val().whoreceiveid + item.val().whosendid)
+        }
+      })
+      setfriendList(arr)
+    });
+  },[])
 
-  //     let handleCancle = (i) => {
-  //       // console.log(i.id);
-  //       remove(ref(db, "friendrequest/" + i.id)).then(()=>{
-  //         // toast("Request Cancel..")
-  //       })
-  //     }
+      let handleCancle = (i) => {
+        // console.log(i.id);
+        remove(ref(db, "friendrequest/" + i.id)).then(()=>{
+          // toast("Request Cancel..")
+        })
+      }
     
      
 
@@ -99,7 +101,7 @@ const UserItem = () => {
                 {userList && userList.length>0 
                 ?
                 userList.map((item,index)=>(
-                    <div key={index} className='cardbox'>
+                  <div key={index} className='cardbox'>
                         <div className='useritem'>
                             <div className='Userimg'>
                                 <img src={one} />
@@ -108,7 +110,7 @@ const UserItem = () => {
                                 <h4>{item.username}</h4>
                             </div>
                         </div>
-                        {/* {
+                        {
                       fRequest.length > 0 && fRequest.includes(item.id + data.uid) || fRequest.includes(data.uid + item.id)
                       ?<>
                         <button className='addbutton'>pending</button>
@@ -122,13 +124,9 @@ const UserItem = () => {
                         <button onClick={()=>handleFRequest(item)} className='addbutton'>
                           add
                         </button>
-                      } */}
-                        <div className='userbtn'>
-                            <button onClick={()=>handleFRequest(item)} className='addbutton'>
-                                <FaPlusCircle />
-                            </button>
-                        </div>
-                    </div>
+                      }
+                        
+                  </div>
                     ))
 
                     :

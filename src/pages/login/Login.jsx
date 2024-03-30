@@ -92,17 +92,17 @@ const Login = () => {
       }else{
         signInWithEmailAndPassword(auth, formdata.email , formdata.password).then((userCredential)=>{
           if (userCredential.user.emailVerified){
-             // console.log(userCredential);
-            localStorage.setItem("user" , JSON.stringify(userCredential.user))
+            //  console.log(userCredential);
+            localStorage.setItem("user", JSON.stringify(userCredential.user))
             dispatch(loginuser(userCredential.user))
             navigate("/home")
-            // console.log(userCredential.user);
+            console.log(userCredential.user);
            
              
           }else{
             signOut(auth).then(()=>{
-              console.log("verify your mail");
-              console.log("sing out");
+              // console.log("verify your mail");
+              // console.log("sing out");
               toast.error('please verify!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -133,7 +133,7 @@ const Login = () => {
           email:"",
           password:""
         })
-        console.log(formdata);
+        // console.log(formdata);
       }
       
     }
@@ -187,7 +187,7 @@ const Login = () => {
             <div className='login-box'>
               <div className='box-one'>
                   <div>
-                      <SectionHeading style="auth-headin" text='Login Your Account'/>
+                      <SectionHeading style="auth-head" text='Login Your Account'/>
                   </div>
                   <div className='proverlogin'>
                       <div className='logo'>

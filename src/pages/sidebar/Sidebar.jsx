@@ -11,12 +11,14 @@ import { getAuth, signInWithEmailAndPassword ,signOut, updateProfile } from "fir
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
+import { loginuser } from '../../slices/userSlice';
 
 const Sidebar = () => {
     const data = useSelector((state) => state.loginuserdata.value);
     // console.log(data);
     const auth = getAuth();
     const navigate = useNavigate();
+    const dispatch = useDispatch()
 
 
     useEffect(() => {
@@ -30,7 +32,7 @@ const Sidebar = () => {
     let handleLogout = () => {
         signOut(auth).then(()=> {
             localStorage.removeItem("user");
-            // dispatch(loginuser(null));
+            dispatch(loginuser(null));
             navigate("/")
             toast.success("Logout Done", {
                 position: "top-right",
