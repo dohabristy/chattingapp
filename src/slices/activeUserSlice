@@ -1,0 +1,25 @@
+import { createSlice } from '@reduxjs/toolkit'
+
+const initialState = {
+  value: undefined,
+  // value: localStorage.getItem("user") ? localStorage.getItem("user") : null,
+  // value: null,
+}
+
+// console.log(value)
+export const activeUserSlice = createSlice({
+  name: 'activeuser',
+  initialState,
+  reducers: {
+    activeuser: (state,action) => {
+      state.value = action.payload
+      // console.log(action.payload);
+      // console.log(state.value);
+    },
+  },
+})
+
+
+export const { activeuser } = activeUserSlice.actions
+
+export default activeUserSlice.reducer

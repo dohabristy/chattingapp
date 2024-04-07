@@ -40,6 +40,9 @@ background-color: rgba(0, 255, 255, 0.242);
     background: transparent;
     height: 680px;
     border: 1px solid rgb(78, 76, 76);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 .userinfobox {
     display: flex;
@@ -50,17 +53,61 @@ background-color: rgba(0, 255, 255, 0.242);
 .msgimg {
     margin-top: 25px;
 }
-.msg-box-heading {
-    width: 100%;
-    height: 100px;
-    background-color: #5F35F5;
-    margin-top: 0;
-    flex-direction: column;
-    display: flex;
-    position: relative;
-
+.msg-box-heading{
+    background-color: blueviolet;
 }
-.msg-box-heading .msg-heading{
-    position: absolute;
-    text-align: center;
+
+.active-msg{
+    padding: 15px 30px;
+    color: aliceblue;
+}
+.msg-main{
+    margin: 20px;
+    gap: 20px;
+}
+.sendmsg{
+    display: flex;
+    justify-content: flex-end;
+}
+.sendmsg p{
+    background-color: #5F35F5;
+    color: aliceblue;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.receivedmsg p{
+    background-color: #000000;
+    color: aliceblue;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 10px;
+}
+.msg-footer{
+    background-color: rgba(138, 138, 244, 0.686);
+    width: 100%;
+    height: 70px;
+    padding: 10px 20px;
+}
+.msg-input{
+    width: 60%;
+    height: 100%;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    font-size: 20px;
+}
+.msgsendbtn{
+    height: 100%;
+    padding: 0 30px;
+    background-color: white;
+    border-radius:5px ;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 20px;
+    border: none;
 }
